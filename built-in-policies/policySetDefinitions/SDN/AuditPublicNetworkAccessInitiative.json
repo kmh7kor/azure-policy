@@ -4,7 +4,7 @@
     "policyType": "BuiltIn",
     "description": "Audit Azure resources that allow access from the public internet",
     "metadata": {
-      "version": "2.0.0",
+      "version": "4.0.0",
       "category": "SDN"
     },
     "parameters": {
@@ -12,6 +12,19 @@
         "type": "String",
         "metadata": {
           "displayName": "Microsoft.AppConfiguration/configurationStores Effect",
+          "description": "Set an effect for this resource type"
+        },
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Audit"
+      },
+      "Effect-AppServiceEnvironment": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Microsoft.Web/hostingEnvironments Effect",
           "description": "Set an effect for this resource type"
         },
         "allowedValues": [
@@ -95,6 +108,18 @@
         "allowedValues": [
           "Audit",
           "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Audit"
+      },
+      "Effect-Microsoft.Compute-disks": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Microsoft.ContainerRegistry/registries Effect",
+          "description": "Set an effect for this resource type"
+        },
+        "allowedValues": [
+          "Audit",
           "Disabled"
         ],
         "defaultValue": "Audit"
@@ -190,6 +215,19 @@
         ],
         "defaultValue": "Audit"
       },
+      "Effect-Microsoft.Databricks-workspaces": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Microsoft.Databricks/workspaces Effect",
+          "description": "Set an effect for this resource type"
+        },
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Audit"
+      },
       "Effect-Microsoft.Devices-IotHubs": {
         "type": "String",
         "metadata": {
@@ -207,6 +245,19 @@
         "type": "String",
         "metadata": {
           "displayName": "Microsoft.Devices/provisioningServices Effect",
+          "description": "Set an effect for this resource type"
+        },
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Audit"
+      },
+      "Effect-Microsoft.KeyVault-vaults": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Microsoft.KeyVault/vaults Effect",
           "description": "Set an effect for this resource type"
         },
         "allowedValues": [
@@ -281,6 +332,19 @@
         ],
         "defaultValue": "Audit"
       },
+      "Effect-AzureMonitorPrivateLinkScopes": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Microsoft.Insights/privateLinkScopes Effect",
+          "description": "Set an effect for this resource type"
+        },
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Audit"
+      },
       "Effect-Microsoft.MachineLearningServices-workspaces": {
         "type": "String",
         "metadata": {
@@ -324,6 +388,19 @@
         "type": "String",
         "metadata": {
           "displayName": "Microsoft.Search/searchServices Effect",
+          "description": "Set an effect for this resource type"
+        },
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Audit"
+      },
+      "Effect-Microsoft.ServiceBus-namespaces": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Microsoft.Storage/namespaces Effect",
           "description": "Set an effect for this resource type"
         },
         "allowedValues": [
@@ -410,6 +487,15 @@
         }
       },
       {
+        "policyDefinitionReferenceId": "AuditPublicNetworkAccessForMicrosoftAppServiceEnvironment",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2d048aca-6479-4923-88f5-e2ac295d9af3",
+        "parameters": {
+          "effect": {
+            "value": "[parameters('Effect-AppServiceEnvironment')]"
+          }
+        }
+      },
+      {
         "policyDefinitionReferenceId": "AuditPublicNetworkAccessForMicrosoftAttestationProviders",
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/5e7e928c-8693-4a23-9bf3-1c77b9a8fe97",
         "parameters": {
@@ -473,6 +559,15 @@
         }
       },
       {
+        "policyDefinitionReferenceId": "AuditPublicNetworkAccessForMicrosoftComputeDisks",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/8405fdab-1faf-48aa-b702-999c9c172094",
+        "parameters": {
+          "effect": {
+            "value": "[parameters('Effect-Microsoft.Compute-disks')]"
+          }
+        }
+      },
+      {
         "policyDefinitionReferenceId": "AuditPublicNetworkAccessForMicrosoftDataFactory",
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1cf164be-6819-4a50-b8fa-4bcaa4f98fb6",
         "parameters": {
@@ -523,6 +618,15 @@
         "parameters": {
           "effect": {
             "value": "[parameters('Effect-Microsoft.DBforPostgreSQL-servers')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "AuditPublicNetworkAccessForAzureDatabricks",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0e7849de-b939-4c50-ab48-fc6b0f5eeba2",
+        "parameters": {
+          "effect": {
+            "value": "[parameters('Effect-Microsoft.Databricks-workspaces')]"
           }
         }
       },
@@ -581,6 +685,15 @@
         }
       },
       {
+        "policyDefinitionReferenceId": "AuditPublicNetworkAccessForAzureKeyVault",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/405c5871-3e91-4644-8a63-58e19d68ff5b",
+        "parameters": {
+          "effect": {
+            "value": "[parameters('Effect-Microsoft.KeyVault-vaults')]"
+          }
+        }
+      },
+      {
         "policyDefinitionReferenceId": "AuditPublicNetworkAccessForMicrosoftApplicationInsights",
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1bc02227-0cb6-4e11-8f53-eb0b22eab7e8",
         "parameters": {
@@ -608,6 +721,15 @@
         }
       },
       {
+        "policyDefinitionReferenceId": "AuditPublicNetworkAccessForAzureMonitorPrivateLinkScopes",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a499fed8-bcc8-4195-b154-641f14743757",
+        "parameters": {
+          "effect": {
+            "value": "[parameters('Effect-AzureMonitorPrivateLinkScopes')]"
+          }
+        }
+      },
+      {
         "policyDefinitionReferenceId": "AuditPublicNetworkAccessForMicrosoftLogAnalytics",
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/6c53d030-cc64-46f0-906d-2bc061cd1334",
         "parameters": {
@@ -622,6 +744,15 @@
         "parameters": {
           "effect": {
             "value": "[parameters('Effect-Microsoft.Search-searchServices')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "AuditPublicNetworkAccessForMicrosoftServiceBus",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/cbd11fd3-3002-4907-b6c8-579f0e700e13",
+        "parameters": {
+          "effect": {
+            "value": "[parameters('Effect-Microsoft.ServiceBus-namespaces')]"
           }
         }
       },
